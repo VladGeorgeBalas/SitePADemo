@@ -3,7 +3,7 @@ weight: 3
 title: "Laborator 3 - Valori si adrese"
 ---
 
-## 1) Numere aleatorii
+## Numere aleatorii
 
 În multe aplicații din statistică sau criptografie este necesară generarea unor numere aleatorii.
 Ele sunt de asemenea utile în testarea performanțelor unui algoritm, când se folosesc, cel mai adesea, inputuri aleatorii pentru a evita testarea situațiilor favorabile sau defavorabile și a obține o medie realistă ce caracterizează performanțele.
@@ -13,12 +13,13 @@ O pot face dacă se bazează pe procese externe, de regulă fizice, care produc 
 În lipsa unui astfel de proces, numerele ce pot fi generate cu un calculator se numesc pseudo-aleatorii, adică
 au proprietăți suficient de asemănătoare celor aleatorii.
 
-Generatoarele de numere pseudoaleatorii sunt algoritmi care folosesc o valoare de inițializare, denumită *seed*, pentru a genera numere ce urmăresc o anumită distribuție (uniformă, normală etc).
+Generatoarele de numere pseudoaleatorii sunt algoritmi care folosesc o valoare de inițializare, denumită `seed`, pentru a genera numere ce urmăresc o anumită distribuție (uniformă, normală etc).
 Prezența seedului face ca outputul funcției să fie predictibil, spre deosebire de cazul numerelor cu adevărat aleatorii.
 
 În C, pentru a genera numere întregi aleatorii cu distribuție uniformă puteți folosi biblioteca `time.h`, după cum urmează:
 
 :::{code} c
+:linenos:
 #include <time.h>
 
 srand(time(NULL));
@@ -54,7 +55,7 @@ intervalului în care să se găsească numărul (pentru a evita pierderea unifo
 sau specifică în mod explicit algoritmul de generare a numerelor.
 Pentru scopul educativ al aplicațiilor din acest manual, însă, funcția `rand()` este suficient de bună.
 
-## 2) Pointeri
+## Pointeri
 
 În mod obișnuit, o variabilă este înțeleasă ca un nume simbolic care are asociat un tip de date și
 o valoare (de exemplu, `int x = 2`).
@@ -77,7 +78,7 @@ Presupunem că un pointer `p` este folosit pentru a reține adresa unei variabil
 <!-- %Valoarea \textit{r-value} a lui \lstinline|p| este egală cu \textit{l-value} a variabilei \lstinline|x| (adresa variabilei~\lstinline|x|). \\
 %Valoarea \textit{l-value} a lui \lstinline|p| este adresa de memorie la care se găsește pointerul \lstinline|p|, deci va fi adresa unde este stocată adresa variabilei \lstinline|x|. \\ -->
 
-## 3) Operații cu pointeri
+## Operații cu pointeri
 Pointerii sunt tipuri de date derivate.
 Pentru a declara un pointer către o variabilă de tip `int` se  utilizează `int *`, pentru a declara un
 pointer către o variabilă de tip `void` se utilizează `void *` ș.a.m.d..

@@ -3,6 +3,8 @@ weight: 1
 title: "Laborator 1 - Bune practici de programare"
 ---
 
+---
+
 ##  Asigurarea lizibilitătii
 ### Denumiri și comentarii
 
@@ -151,6 +153,8 @@ situații când secvența de cod nu este folosită în mod identic
 pentru a trata unitar cazurile particulare de utilizare.
 Un exemplu în acest sens va fi discutat in laboratorul de astăzi.
 
+---
+
 ## Asigurarea corectitudinii
 
 ### Reutilizarea variabilelor
@@ -201,6 +205,7 @@ Spre exemplu, dacă se așteaptă ca o funcție să primească o variabilă
 ce reprezintă o zi calendaristică, trebuie verificat faptul că valoarea
 primită face parte din valorile admise.
 
+---
 
 ## Ghiduri de stil
 

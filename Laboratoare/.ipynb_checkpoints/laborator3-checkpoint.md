@@ -3,7 +3,7 @@ weight: 3
 title: "Laborator 3 - Valori si adrese"
 ---
 
-## 1) Numere aleatorii
+## Numere aleatorii
 
 În multe aplicații din statistică sau criptografie este necesară generarea unor numere aleatorii.
 Ele sunt de asemenea utile în testarea performanțelor unui algoritm, când se folosesc, cel mai adesea, inputuri aleatorii pentru a evita testarea situațiilor favorabile sau defavorabile și a obține o medie realistă ce caracterizează performanțele.
@@ -13,12 +13,13 @@ O pot face dacă se bazează pe procese externe, de regulă fizice, care produc 
 În lipsa unui astfel de proces, numerele ce pot fi generate cu un calculator se numesc pseudo-aleatorii, adică
 au proprietăți suficient de asemănătoare celor aleatorii.
 
-Generatoarele de numere pseudoaleatorii sunt algoritmi care folosesc o valoare de inițializare, denumită *seed*, pentru a genera numere ce urmăresc o anumită distribuție (uniformă, normală etc).
+Generatoarele de numere pseudoaleatorii sunt algoritmi care folosesc o valoare de inițializare, denumită `seed`, pentru a genera numere ce urmăresc o anumită distribuție (uniformă, normală etc).
 Prezența seedului face ca outputul funcției să fie predictibil, spre deosebire de cazul numerelor cu adevărat aleatorii.
 
 În C, pentru a genera numere întregi aleatorii cu distribuție uniformă puteți folosi biblioteca `time.h`, după cum urmează:
 
 :::{code} c
+:linenos:
 #include <time.h>
 
 srand(time(NULL));
