@@ -3,6 +3,8 @@ weight: 2
 title: "Laborator 2 - Controlul versiunilor & Git"
 ---
 
+---
+
 ## Ce este git?
 
 [**Git**](https://git-scm.com/downloads) este un sistem de management al proiectelor
@@ -37,7 +39,10 @@ alta se numește `merge`.
 Pentru început vom vedea cum se creează și cum se folosește un repository local, iar apoi cum se
 sincronizează acesta cu unul aflat pe server (`remote`).
 
-## Instalare
+---
+
+## Setup
+### Instalare
 
 Este necesar ca întâi să instalați Git, varianta pentru sistemul vostru de operare. [Start here](https://git-scm.com/downloads).
 
@@ -45,7 +50,7 @@ Este necesar ca întâi să instalați Git, varianta pentru sistemul vostru de o
 alegeți `Override the default branch name for new repositories`, cu textul `main`.
 Pentru restul ferestrelor puteți lăsa opțiunile implicite.
 
-## Repository local
+### Repository local
 
 Pentru a utiliza Git într-un proiect software e nevoie de inițializarea unui
 repository în directorul care conține programele din proiect.
@@ -54,7 +59,7 @@ aceste modificări vor fi incluse într-un commit nou.
 
 Toate aceste operații se realizează în linia de comandă (Command Prompt în Windows sau Terminal în Linux).
 
-## Configurare
+### Configurare
 
 Pentru a inițializa un repository nou, în linia de comandă navigați în directorul
 dorit și folosiți comanda:
@@ -70,6 +75,8 @@ calculator din laborator):
 git config user.name "Codin Codescu"
 git config user.email "codin@codescu.com"
 :::
+
+---
 
 ## Utilizare
 
@@ -105,11 +112,13 @@ Se obișnuiește ca subiectul să fie redactat în modul imperativ, spre exemplu
 După ce un commit a fost creat, acesta nu se mai poate modifica și va rămâne în istoricul proiectului.
 Se poate reveni, însă, la un commit anterior, în cazul în care în acesta s-au strecurat greșeli.
 
+---
+
 ## Conectarea la un repository remote
 
 [GitLab](https://gitlab.com/) și [GitHub](https://github.com/)  sunt două exemple de platforme ce oferă servicii de găzduire pentru software și care folosesc sistemul Git.
 
-## Conectare prin ssh
+### Conectare prin ssh
 
 SSH (Secure Shell) este un protocol de rețea care permite conectarea în siguranță la alte calculatoare.
 Autentificarea se realizează printr-un sistem de criptare asimetric bazat pe o pereche de chei:
@@ -140,7 +149,7 @@ putea face modificări în contul vostru remote. În acest caz, asigurați-vă c
 lucru ștergeți perechea de chei din calculator. De fiecare dată când veți dori să vă conectați pe contul
 remote de pe un calculator nou va trebui să generați o nouă pereche de chei.
 
-## Repository remote
+### Repository remote
 
 Până acum ați creat un repository local. Este nevoie să creați și unul pe server, apoi să le sincronizați pe cele două.
 

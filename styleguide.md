@@ -30,6 +30,8 @@ Subsectiunile folosesc header daca sunt destul de importante incat sa se afle in
 **Asa arata** o alta idee ce merita propriul paragraf.
 :::
 
+In cazul in care apar sectiuni mici, este un motiv de ingrijorare in legatura cu modul de organizare al materialelor, caz in care probabil sectiunea trebuie transformata intr-o subsectiune a unei sectiunii reprezentative.
+
 ## Definitii si observatii
 
 Pentru definitii se vor folosi admonitii de tip `note` avand ca titlu notiunea definita. Similar, pentru observatii, se vor folosi admonitii de tip `tip` avand optional un titlu reprezentativ
