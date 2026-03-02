@@ -21,7 +21,7 @@ jobs:
       TARGET_REPO: VladGeorgeBalas/public_pages_test_repo
       TARGET_BRANCH: main
       BOOK_DIR: .
-      BUILD_DIR: _build/html
+      BUILD_DIR: _build/site
 
     steps:
       - name: Checkout source repo
