@@ -22,6 +22,7 @@ jobs:
       TARGET_BRANCH: main
       BOOK_DIR: .
       BUILD_DIR: _build/site
+      BASE_URL: /public_pages_test_repo
 
     steps:
       - name: Checkout source repo
@@ -45,7 +46,7 @@ jobs:
 
       - name: Build Jupyter Book
         run: |
-          jupyter-book build --html
+          jupyter-book build --html --base-url "${BASE_URL}"
 
       # --- AUTH via SSH deploy key ---
       - name: Set up SSH for pushing to target repo
