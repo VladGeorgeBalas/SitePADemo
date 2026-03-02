@@ -1,0 +1,95 @@
+name: Build & Publish Jupyter Book to external repo
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-jupyterbook
+  cancel-in-progress: true
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    env:
+      # Repo-ul unde publici (owner/repo)
+      TARGET_REPO: username/public_pages_test_repo
+      TARGET_BRANCH: main
+      BOOK_DIR: .
+      BUILD_DIR: _build/html
+
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -U jupyter-book
+
+      - name: Clean previous build
+        run: |
+          rm -rf "${BOOK_DIR}/_build"
+
+      - name: Build Jupyter Book
+        run: |
+          jupyter-book build "${BOOK_DIR}"
+
+      # --- AUTH via SSH deploy key ---
+      - name: Set up SSH for pushing to target repo
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+
+      - name: Clone target repo
+        run: |
+          git clone --depth 1 --branch "${TARGET_BRANCH}" "git@github.com:${TARGET_REPO}.git" target_repo
+
+      - name: Replace target contents with new build
+        run: |
+          set -euxo pipefail
+
+          # Șterge TOT din target, dar păstrează .git
+          shopt -s dotglob
+          cd target_repo
+          for item in * .[^.]*; do
+            if [ "$item" != ".git" ]; then
+              rm -rf "$item"
+            fi
+          done
+          cd ..
+
+          # Copiază build-ul nou
+          rsync -av --delete "${BOOK_DIR}/${BUILD_DIR}/" target_repo/
+
+          # Opțional: GitHub Pages uneori vrea .nojekyll
+          touch target_repo/.nojekyll
+
+      - name: Commit & push if changed
+        run: |
+          cd target_repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "Publish Jupyter Book (${GITHUB_SHA})"
+            git push origin "${TARGET_BRANCH}"
+          else
+            echo "No changes to publish."
+          fi
