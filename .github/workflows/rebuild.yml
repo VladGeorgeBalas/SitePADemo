@@ -46,7 +46,8 @@ jobs:
 
       - name: Build Jupyter Book
         run: |
-          jupyter-book build --html --base-url "${BASE_URL}"
+          export BASE_URL = "${BASE_URL}"
+          jupyter-book build --html 
 
       # --- AUTH via SSH deploy key ---
       - name: Set up SSH for pushing to target repo
