@@ -60,21 +60,17 @@ jobs:
           git clone --depth 1 --branch "${TARGET_BRANCH}" "git@github.com:${TARGET_REPO}.git" target_repo
 
       - name: Replace target contents with new build
+        shell: bash
         run: |
           set -euxo pipefail
 
-          # verifică că build-ul există
-          test -f "${BOOK_DIR}/_build/html/index.html"
+          test -f "./_build/html/index.html"
 
-          # golește target_repo (păstrează .git)
-          shopt -s dotglob
           cd target_repo
-          rm -rf -- !( .git )
+          find . -mindepth 1 -maxdepth 1 ! -name ".git" -exec rm -rf {} +
           cd ..
 
-          # copiază build-ul în root-ul target
-          cp -a "${BOOK_DIR}/_build/html/." target_repo/
-
+          cp -a "./_build/html/." target_repo/
           touch target_repo/.nojekyll
 
       - name: Commit & push if changed
