@@ -45,7 +45,7 @@ jobs:
 
       - name: Build Jupyter Book
         run: |
-          jupyter-book build "${BOOK_DIR}"
+          jupyter-book build "${BOOK_DIR}" --html
 
       # --- AUTH via SSH deploy key ---
       - name: Set up SSH for pushing to target repo
