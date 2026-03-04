@@ -75,7 +75,7 @@ jobs:
           find . -mindepth 1 -maxdepth 1 ! -name ".git" -exec rm -rf {} +
           cd ..
 
-          cp -a "${BOOK_DIR}/{BUILD_DIR}/html/." target_repo/
+          cp -a "${BOOK_DIR}/${BUILD_DIR}/html/." target_repo/
           touch target_repo/.nojekyll
 
       - name: Commit & push if changed
