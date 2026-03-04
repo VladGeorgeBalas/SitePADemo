@@ -17,14 +17,14 @@ project:
     - file: main.md
     - file: administrativ.md
     - file: styleguide.md
-      hidden: false
+      hidden: true
     - title: Laboratoare
       children:
         - file: Laboratoare/laborator1.md
         - file: Laboratoare/laborator2.md
         - file: Laboratoare/laborator3.md
         - file: Laboratoare/laborator4.md
-    
+
 site:
   template: book-theme
   options:
