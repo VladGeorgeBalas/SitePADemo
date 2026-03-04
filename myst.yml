@@ -17,7 +17,7 @@ project:
     - file: main.md
     - file: administrativ.md
     - file: styleguide.md
-      hidden: true
+      hidden: false
     - title: Laboratoare
       children:
         - file: Laboratoare/laborator1.md
